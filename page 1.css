@@ -1,11 +1,11 @@
-/* Embrace the reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Elevate the body */
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f8f8;
@@ -14,7 +14,7 @@ body {
     text-align: center;
 }
 
-/* Make headers pop with a touch of elegance */
+
 h2 {
     font-size: 2em;
     font-weight: bold;
@@ -23,7 +23,7 @@ h2 {
     font-style: italic; /* Italicized */
 }
 
-/* Style the links with flair */
+
 a {
     display: inline-block;
     margin: 10px;
@@ -35,12 +35,11 @@ a {
     transition: background-color 0.3s;
 }
 
-/* Hover effect for some sizzle */
 a:hover {
     background-color: black;
 }
 
-/* Go responsive gracefully */
+
 @media screen and (max-width: 768px) {
     h2 {
         font-size: 1.5em;
