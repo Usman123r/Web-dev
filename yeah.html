@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
         $success = 1;
         echo '<script>';
         echo 'alert("Successfully registered!");';
-        echo 'window.location.href = "exer.php";';
+        echo 'window.location.href = "signup.php";';
         echo '</script>';
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($connect);

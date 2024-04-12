@@ -1,33 +1,41 @@
 <?php
+session_start();
 include 'yes2.php';
-$success = 0;
 
-if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
+// Assuming $connect is your database connection variable, make sure it's properly initialized before using it
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: exer.html");
+    exit;
+}
+
+$error = '';
+
+if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password_hash = hash("md5", $password);
 
-    $query = "INSERT INTO users(name, email, password) VALUES(\"$name\",\"$email\",\"$password_hash\")";
+    // Assuming your database table name is 'users'
+    $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password_hash'";
     $result = mysqli_query($connect, $query);
 
-    if ($result) {
-        $success = 1;
-        echo '<script>';
-        echo 'alert("Successfully registered!");';
-        echo 'window.location.href = "exer.php";';
-        echo '</script>';
+    if ($result && mysqli_num_rows($result) == 1) {
+        $user = mysqli_fetch_assoc($result);
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['name'];
+        header("Location: exer.html");
+        exit;
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($connect);
-        $success = 0;
+        $error = "Invalid email or password";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Signup</title>
+    <title>Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;100;700;300;500;400&display=swap" rel="stylesheet">
@@ -40,7 +48,7 @@ if (isset($_POST['submit'])) {
         }
 
         .container {
-            max-width: 600px;
+            max-width: 400px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -51,6 +59,7 @@ if (isset($_POST['submit'])) {
         .heading {
             color: #333;
             text-align: center;
+            margin-bottom: 20px;
         }
 
         .form-field {
@@ -62,7 +71,6 @@ if (isset($_POST['submit'])) {
             color: #777;
         }
 
-        .form-field input[type="text"],
         .form-field input[type="email"],
         .form-field input[type="password"] {
             width: 100%;
@@ -72,7 +80,12 @@ if (isset($_POST['submit'])) {
             box-sizing: border-box;
         }
 
-        #submitbtn {
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        #loginbtn {
             width: 100%;
             padding: 10px;
             border: none;
@@ -82,40 +95,28 @@ if (isset($_POST['submit'])) {
             cursor: pointer;
         }
 
-        #submitbtn:hover {
+        #loginbtn:hover {
             background-color: #45a049;
-        }
-
-        .result {
-            margin-top: 5px;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
-            <h2 class="heading">Create account</h2>
-
+        <h2 class="heading">Login</h2>
+        <?php if (!empty($error)) : ?>
+            <div class="error"><?php echo $error; ?></div>
+        <?php endif; ?>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="form-field">
-                <p>Your Name</p>
-                <input type="text" name="name" placeholder="Enter your username">
-            </div>
-
-            <div class="form-field">
-                <p>Your Email</p>
+                <p>Email</p>
                 <input type="email" name="email" placeholder="Enter your email">
             </div>
-
             <div class="form-field">
                 <p>Password</p>
                 <input type="password" name="password" placeholder="Enter your password">
-                <div id="passResult" class="result" style="color:red;"></div>
             </div>
-
-            <input type="submit" name="submit" id="submitbtn" value="Submit">
+            <input type="submit" name="login" id="loginbtn" value="Login">
         </form>
     </div>
 </body>
-
 </html>

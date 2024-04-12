@@ -1,18 +1,32 @@
+<?php
+session_start();
+
+// Unset all session variables
+$_SESSION = array();
+
+// Destroy the session
+session_destroy();
+
+// Redirect to the login page or any other page as needed
+header("Location: login.php");
+exit;
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>myweb</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=roboto:wght@400;
-100;700;300;500;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=roboto:wght@400;100;700;300;500;400&display=swap" rel="stylesheet">
 
     <style>
         body {
             background-image: url("book.jpeg");
             background-size: 50% auto;
             width: max-content;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
         }
 
         * {
@@ -72,24 +86,9 @@
             <li><a href="home.html">aboutUs</a></li>
             <li><a href="booking.html"><img src="book.jpg" width="20px">.Booking</a></li>
             <li><a href="#"><img src="phone.png" width="20px">.contact</a></li>
-            <li><a href="logout.php">logout</a></li>
+            <li><a href="login.php">login</a></li>
         </ul>
-
     </div>
-
-    <?php
-    session_start();
-
-    // Unset all session variables
-    $_SESSION = array();
-
-    // Destroy the session
-    session_destroy();
-
-    // Redirect to the login page or any other page as needed
-    header("Location: login.php");
-    exit;
-    ?>
 
 </body>
 

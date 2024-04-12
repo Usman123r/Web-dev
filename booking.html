@@ -1,73 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>myweb</title>
+    <title>booking</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=roboto:wght@400;
 100;700;300;500;400&display=swap" rel="stylesheet">
-   
-    <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=fb3IghSy0PdSCkvoEI1rama_tGZctq5Lwi2RrdbIFnfTc1ca81EedAqUQPETp3ZRDvJYKkVzX7CLbIkIfXh4Xg" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="http://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovL2xvY2FsaG9zdC9saXR0ZXJhcnklMjBsb3VuZ2UvZXhlci5odG1s"/><script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=eWXJk9-2j7Cqz1ZCr8j_VU8-cvffb9vOFL9aUxdGFoEJZG5DsQOIIdjvZO_txBuYHlqE1TX1_uflUH5gU4mzRQ" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="http://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovL2xvY2FsaG9zdC9saXR0ZXJhcnklMjBsb3VuZ2UvZXhlci5odG1s"/><style>
+    <style>
         body{
-            background-image: url("book.jpeg");
-            background-size: 50% auto;
-            width: max-content;
+            background-color: pink;
         }
         *{
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            text-decoration: none;
-        }
-        .disp{
-            position: fixed;
-            left: 0px;
-            width: 250px;
-            height: 100%;
-            background: #042331;
-        }
-        .disp header{
-            font-size: 22px;
-            color: white;
-            text-align: center;
-            line-height: 70px;
-            background: #063146;
-            user-select: none;
-        }
-        .disp ul a{
-            display: block;
-            height: 100%;
-            width: 100%;
-            line-height: 65px;
-            font-size: 20px;
-            color: white;
-            padding-left: 40px;
+            padding:0;
+            margin:0;
+            text-decoration:none;
+            list-style:none;
             box-sizing: border-box;
-            border-top: 1px solid rgba(255,255,255,.1);
-            border-bottom: 1px solid black;
-            transition: all .4s ease;
-        } 
-        ul li:hover a{
-            padding-left: 50px;
         }
-        .disp ul a i{
-            margin-right: 16px;
+        body{
+            font-family:'roboto', sans-serif ;
         }
-        
+        nav{
+            background:chartreuse ;
+            height:80px ;
+            width: 100%;
+            
+
+        }
+        label.logo{
+            color: white;
+            font-size: 35px;
+            line-height:80px ;
+            padding:0 100px;
+            font-weight: bold;
+        }
+        nav ul{
+            float: right;
+            margin-right:20px ;
+        }
+        nav ul li{
+            display:inline-block ;
+            line-height: 80px ;
+            margin: 0 5px;
+        }
+        nav ul li a{
+            color: white;
+            font-size: 17px;
+            padding: 7px 13px;
+            border-radius: 3px;
+
+
+        }
+        a.active, a:hover{
+            background: #1b9bff;
+            transition: .5s ;
+        }
+        .des{
+            background-image: url("log.jpeg");
+            width: fit-content;
+            padding: 50px;
+        }
+        .img{
+            float: right;
+            
+        }
+        .tab{
+            background-color: blueviolet;
+        }
+    
     </style>
 </head>
 <body>
     
-    <div class="disp">
-        <header>Litterary Lounge</header>
+    <nav>
+        <img src="log.png" width="100px" alt="">
+        <label class="logo"></label>
+        
         <ul>
-            <li><a href="exer.html"><img src="hom.png" width="20px">.HOME</a></li>
-            <li><a href="home.html">aboutUs</a></li>
-            <li><a href="booking.html"><img src="book.jpg" width="20px">.Booking</a></li>
-            <li><a href="#"><img src="phone.png" width="20px">.contact</a></li>
-            <li><a href="#">feedback</a></li> 
+            <li><a href="exer.html">HOME</a></li>
+            <li><a href="home.html">AboutUs</a></li>
+            <li><a class="active"href="registration.html">booking</a></li>
+            
         </ul>
-
+        
+        
+            </nav>
+           
+  
+    <div class="tab">
+        <p><span style="color: black;"><strong> here are book we have:</strong></span></p>
+        <table border="1">
+            <tr>
+                <th>edition</th>
+                <th>availability</th>
+            </tr>
+            <tr>
+                <td>edition 2023</td>
+                <td>available</td>
+            </tr>
+            <tr>
+                <td>edition 2023</td>
+                <td>available</td>
+            </tr>
+            <tr>
+                <td>edition 2023</td>
+                <td>available</td>
+            </tr>
+        </table>
     </div>
+    
+<img class="img" src="poin.png">
+    <div class="des">
+    <p><span style="color:black;">Fill your details:</span></p>
+    
+    <form>
+        <div>
+        <label><span style="color:black;"> full name:</span></label>
+        <input type="text" name="username" placeholder="Enter your name" required ><br>
+    </div>
+    
+    <label for="phone"><span style="color:black;">Phone_number:</span></label>
+    <input type="tel" id="phone" name="phone"><br>
+
+    
+    <label for="email"><span style="color:black;">email:</span></label>
+    <input type="email" id="email" name="email" required><br>
+        
+    
+
+    <div> 
+        <label><span style="color:black;">age:</span></label>
+    <input type="number" placeholder="Enter your age"> <br>
+</div> 
+
+<div class="last">
+    <input type="submit" name="booking"  value="submit" class="subm">
+    
+    <input type="reset"  value="reset" class="res">
+    
+
+    
+</div>
+</div>
+
+
 </body>
 </html>
